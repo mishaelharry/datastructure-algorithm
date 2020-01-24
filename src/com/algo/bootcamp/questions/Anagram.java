@@ -6,14 +6,15 @@ import java.util.HashMap;
 public class Anagram {
 
     public boolean isAnagram1(String text1, String text2){
-        HashMap<String, Integer> map1 = map(text1.replace("!", "").toLowerCase());
-        HashMap<String, Integer> map2 = map(text2.replace("!", "").toLowerCase());
+        HashMap<String, Integer> map1 = map(text1);
+        HashMap<String, Integer> map2 = map(text2);
         return map1.equals(map2);
     }
 
-    private HashMap<String, Integer> map(String text1) {
+    private HashMap<String, Integer> map(String text) {
         HashMap<String, Integer> map = new HashMap<>();
-        char[] arr = text1.toCharArray();
+        text =  text.replace("[^a-zA-Z0-9]", "").toLowerCase();
+        char[] arr = text.toCharArray();
 
         for (char val : arr){
             String letter = String.valueOf(val);
